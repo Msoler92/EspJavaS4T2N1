@@ -5,15 +5,18 @@ import cat.itacademy.barcelonactiva.solereina.manel.s04.t02.n01.model.exceptions
 import cat.itacademy.barcelonactiva.solereina.manel.s04.t02.n01.model.repository.FruitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FruitaService {
 
     @Autowired
     FruitaRepository fruitaRepository;
+
     public Fruita save(Fruita fruita) throws IllegalArgumentException, OptimisticLockingFailureException {
         Fruita returnObject;
         returnObject = fruitaRepository.save(fruita);
@@ -43,6 +46,4 @@ public class FruitaService {
         findById(id);
         fruitaRepository.deleteById(id);
     }
-
-
 }
