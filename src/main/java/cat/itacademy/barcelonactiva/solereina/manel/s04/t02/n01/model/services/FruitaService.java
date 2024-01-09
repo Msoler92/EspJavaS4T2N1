@@ -4,6 +4,7 @@ import cat.itacademy.barcelonactiva.solereina.manel.s04.t02.n01.model.domain.Fru
 import cat.itacademy.barcelonactiva.solereina.manel.s04.t02.n01.model.exceptions.NotFoundException;
 import cat.itacademy.barcelonactiva.solereina.manel.s04.t02.n01.model.repository.FruitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,7 @@ public class FruitaService {
 
     @Autowired
     FruitaRepository fruitaRepository;
-    public Fruita save(Fruita fruita) {
-        //TODO Review exception handling
+    public Fruita save(Fruita fruita) throws IllegalArgumentException, OptimisticLockingFailureException {
         Fruita returnObject;
         returnObject = fruitaRepository.save(fruita);
         return returnObject;
